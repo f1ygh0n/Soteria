@@ -1,0 +1,13 @@
+# Secrets
+.env
+credentials.json
+token.json
+flask_session/
+
+# Virtual env
+.venv/
+routes/.venv/
+
+# Python
+__pycache__/
+*.pyc

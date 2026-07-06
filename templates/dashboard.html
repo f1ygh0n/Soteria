@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<section class="overview">
+
+    <div class="card">
+        <h3>Threat Level</h3>
+        <h1>🟢 LOW</h1>
+    </div>
+
+    <div class="card">
+        <h3>Today's Scans</h3>
+        <h1>0</h1>
+    </div>
+
+    <div class="card">
+        <h3>Threats Detected</h3>
+        <h1>0</h1>
+    </div>
+
+    <div class="card">
+        <h3>System Status</h3>
+        <h1>Healthy</h1>
+    </div>
+
+</section>
+
+<section class="modules">
+
+    <a href="{{ url_for('email.email') }}" class="module-card-link">
+
+        <div class="module-card">
+
+            <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+                class="module-arrow"
+                alt="Open">
+
+            <img src="{{ url_for('static', filename='images/icons/mail.svg') }}"
+                class="module-icon"
+                alt="Email">
+
+            <h3>Email Scanner</h3>
+
+            <p>Analyze suspicious emails using AI and rule-based detection.</p>
+
+        </div>
+
+    </a>
+
+    <div class="module-card">
+
+        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+             class="module-arrow"
+             alt="Open">
+
+        <img src="{{ url_for('static', filename='images/icons/globe.svg') }}"
+             class="module-icon"
+             alt="Website">
+
+        <h3>Website Checker</h3>
+
+        <p>Inspect URLs for malicious or deceptive websites.</p>
+
+    </div>
+
+    <div class="module-card">
+
+        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+             class="module-arrow"
+             alt="Open">
+
+        <img src="{{ url_for('static', filename='images/icons/message-square.svg') }}"
+             class="module-icon"
+             alt="Chat">
+
+        <h3>Chat Detector</h3>
+
+        <p>Identify AI-powered scams and social engineering.</p>
+
+    </div>
+
+    <div class="module-card">
+
+        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+             class="module-arrow"
+             alt="Open">
+
+        <img src="{{ url_for('static', filename='images/icons/key-round.svg') }}"
+             class="module-icon"
+             alt="Password">
+
+        <h3>Password Analyzer</h3>
+
+        <p>Evaluate password strength and security.</p>
+
+    </div>
+
+    <div class="module-card">
+
+        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+             class="module-arrow"
+             alt="Open">
+
+        <img src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
+             class="module-icon"
+             alt="Deepfake">
+
+        <h3>Deepfake Detector</h3>
+
+        <p>Prototype tool for detecting manipulated images.</p>
+
+    </div>
+
+    <div class="module-card">
+
+        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+             class="module-arrow"
+             alt="Open">
+
+        <img src="{{ url_for('static', filename='images/icons/shield-check.svg') }}"
+             class="module-icon"
+             alt="Privacy">
+
+        <h3>Privacy Scanner</h3>
+
+        <p>Check for exposed personal information and privacy risks.</p>
+
+    </div>
+
+</section>
+
+<section class="activity">
+
+    <h2>Recent Activity</h2>
+
+    <p>No scans yet.</p>
+
+</section>
+
+{% endblock %}

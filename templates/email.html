@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <div class="email-container">
+
+            <div class="input-methods">
+
+                <button type="button" id="pasteButton" class="method-button active">
+
+                    <img src="{{ url_for('static', filename='images/icons/copy.svg') }}" class="button-icon">
+
+                    <span>Paste Email</span>
+
+                </button>
+
+                <button type="button" class="method-button" id="uploadButton">
+
+                    <img src="{{ url_for('static', filename='images/icons/upload.svg') }}" class="button-icon">
+
+                    <span>Upload .eml</span>
+
+                </button>
+
+                <button type="button" id="gmailButton" class="method-button">
+
+                    <img src="{{ url_for('static', filename='images/icons/mail.svg') }}" class="button-icon">
+
+                    <span id="gmailButtonText">
+
+                        {% if session.get("credentials") %}
+                            Choose From Gmail
+                        {% else %}
+                            Connect Gmail
+                        {% endif %}
+
+                    </span>
+
+                </button>
+
+                <input type="file" id="emlUpload" accept=".eml" hidden>
+
+            </div>
+
+            <div class="email-box">
+
+                <label>Email Content</label>
+
+                <textarea
+                    name="email_text"
+                    id="emailInput"
+                    placeholder="Paste the full email here...">{{ email_text }}</textarea>
+
+            </div>
+
+            <button type="submit" class="scan-button">
+
+                <img src="{{ url_for('static', filename='images/icons/scan-search.svg') }}" class="button-icon">
+
+                <span>Run Security Scan</span>
+
+            </button>
+
+        </div>
+
+    </form>
+
+    <div id="gmailModal" class="gmail-modal hidden">
+
+        <div class="gmail-modal-content">
+
+            <div class="gmail-header">
+
+                <div class="gmail-header-top">
+
+                    <h2>Choose an Email</h2>
+
+                    <button id="closeModal">✕</button>
+
+                </div>
+
+                <input id="gmailSearch" class="gmail-search" type="text" placeholder="Search emails...">
+
+            </div>
+
+            <div
+                id="gmailList"
+                class="gmail-list">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% if result %}
+
+    <div class="scan-results">
+
+        <h2>Scan Results</h2>
+
+        <div class="result-section">
+
+            <h3>Threat Engine</h3>
+
+            <p>
+                <strong>Risk Score:</strong>
+
+                {{ result.rules.risk_score }}/100
+            </p>
+
+            <p>
+                <strong>Verdict:</strong>
+
+                <span class="
+                    {% if result.rules.quick_verdict == 'HIGH' %}
+                        risk-high
+                    {% elif result.rules.quick_verdict == 'SUSPICIOUS' %}
+                        risk-medium
+                    {% else %}
+                        risk-low
+                    {% endif %}
+                ">
+                    {{ result.rules.quick_verdict }}
+                </span>
+
+            </p>
+
+            <br>
+
+            <h4>Detected Indicators</h4>
+
+            {% if result.rules.flags %}
+
+                <ul class="flags-list">
+
+                    {% for flag in result.rules.flags %}
+
+                        <li>{{ flag.replace("_", " ").replace("keyword:", "")|title }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>No suspicious indicators detected.</p>
+
+            {% endif %}
+
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>AI Analysis</h3>
+
+            <h3>AI Assessment</h3>
+
+            <p>
+
+                <strong>Threat Level:</strong>
+
+                <span class="
+                    {% if result.ai.threat_level == 'HIGH' %}
+                        risk-high
+                    {% elif result.ai.threat_level == 'SUSPICIOUS' %}
+                        risk-medium
+                    {% else %}
+                        risk-low
+                    {% endif %}
+                ">
+                    {{ result.ai.threat_level }}
+                </span>
+
+            </p>
+
+            <p>{{ result.ai.summary }}</p>
+
+            {% if not result.ai_used %}
+                <p style="opacity:.7;font-size:14px;margin-top:12px;">
+                    AI was skipped or unavailable. Displaying the rule engine's assessment.
+                </p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/email.js') }}"></script>
+
+{% endblock %}

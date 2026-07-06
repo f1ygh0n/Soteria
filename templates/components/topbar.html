@@ -1,0 +1,41 @@
+<header class="topbar">
+
+    <div>
+
+        <h2>{{ page_title }}</h2>
+
+        <p>{{ page_subtitle }}</p>
+
+    </div>
+
+    <div class="topbar-actions">
+
+        <div class="search-box">
+
+            <img src="{{ url_for('static', filename='images/icons/search.svg') }}"
+                 class="search-icon"
+                 alt="Search">
+
+            <input
+                type="text"
+                placeholder="Search modules...">
+
+        </div>
+
+        <button class="icon-button">
+
+            <img src="{{ url_for('static', filename='images/icons/bell.svg') }}"
+                 alt="Notifications">
+
+        </button>
+
+        <button class="icon-button">
+
+            <img src="{{ url_for('static', filename='images/icons/user.svg') }}"
+                 alt="Profile">
+
+        </button>
+
+    </div>
+
+</header>

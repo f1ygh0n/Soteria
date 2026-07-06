@@ -1,0 +1,78 @@
+<aside class="sidebar">
+
+    <div class="logo">
+        <img
+            src="{{ url_for('static', filename='images/logo-transparent.svg') }}"
+            alt="Soteria Logo">
+    </div>
+
+    <nav class="navigation">
+
+        <a href="{{ url_for('home.dashboard') }}"
+           class="{% if request.endpoint == 'home.dashboard' %}active{% endif %}">
+            <img src="{{ url_for('static', filename='images/icons/layout-dashboard.svg') }}"
+                 class="nav-icon"
+                 alt="Dashboard">
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{{ url_for('email.email') }}"
+           class="{% if request.endpoint == 'email.email' %}active{% endif %}">
+            <img src="{{ url_for('static', filename='images/icons/mail.svg') }}"
+                 class="nav-icon"
+                 alt="Email">
+            <span>Email Scanner</span>
+        </a>
+
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/icons/globe.svg') }}"
+                 class="nav-icon"
+                 alt="Website">
+            <span>Website Checker</span>
+        </a>
+
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/icons/message-square.svg') }}"
+                 class="nav-icon"
+                 alt="Chat">
+            <span>Chat Detector</span>
+        </a>
+
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/icons/key-round.svg') }}"
+                 class="nav-icon"
+                 alt="Password">
+            <span>Password Analyzer</span>
+        </a>
+
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
+                 class="nav-icon"
+                 alt="Deepfake">
+            <span>Deepfake Detector</span>
+        </a>
+
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/icons/shield-check.svg') }}"
+                 class="nav-icon"
+                 alt="Privacy">
+            <span>Privacy Scanner</span>
+        </a>
+
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/icons/history.svg') }}"
+                 class="nav-icon"
+                 alt="History">
+            <span>History</span>
+        </a>
+
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/icons/settings.svg') }}"
+                 class="nav-icon"
+                 alt="Settings">
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+</aside>
