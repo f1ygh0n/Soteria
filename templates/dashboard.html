@@ -48,21 +48,25 @@
 
     </a>
 
-    <div class="module-card">
+    <a href="{{ url_for('website.website') }}" class="module-link">
 
-        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
-             class="module-arrow"
-             alt="Open">
+        <div class="module-card">
 
-        <img src="{{ url_for('static', filename='images/icons/globe.svg') }}"
-             class="module-icon"
-             alt="Website">
+            <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+                class="module-arrow"
+                alt="Open">
 
-        <h3>Website Checker</h3>
+            <img src="{{ url_for('static', filename='images/icons/globe.svg') }}"
+                class="module-icon"
+                alt="Website">
 
-        <p>Inspect URLs for malicious or deceptive websites.</p>
+            <h3>Website Checker</h3>
 
-    </div>
+            <p>Inspect URLs for malicious or deceptive websites.</p>
+
+        </div>
+
+    </a>
 
     <div class="module-card">
 

@@ -24,7 +24,9 @@
             <span>Email Scanner</span>
         </a>
 
-        <a href="#">
+        <a href="{{ url_for('website.website') }}"
+            class="{% if request.endpoint == 'website.website' %}active{% endif %}">
+
             <img src="{{ url_for('static', filename='images/icons/globe.svg') }}"
                  class="nav-icon"
                  alt="Website">

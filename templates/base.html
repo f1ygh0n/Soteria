@@ -39,7 +39,79 @@
 
 </div>
 
-</body>
+<script>
+window.APP_PAGES = [
+
+    {
+        name: "Dashboard",
+        description: "Overview of your cybersecurity tools.",
+        keywords: ["dashboard", "home"],
+        url: "{{ url_for('home.dashboard') }}"
+    },
+
+    {
+        name: "Email Scanner",
+        description: "Analyze suspicious emails using AI.",
+        keywords: ["email", "mail", "gmail", "scanner"],
+        url: "{{ url_for('email.email') }}"
+    },
+
+    {
+        name: "Website Checker",
+        description: "Analyze URLs for phishing and scams.",
+        keywords: ["website", "url", "domain", "link", "phishing"],
+        url: "{{ url_for('website.website') }}"
+    },
+
+    {
+        name: "Chat Detector",
+        description: "Coming Soon",
+        keywords: ["chat", "message"],
+        url: "#"
+    },
+
+    {
+        name: "Password Analyzer",
+        description: "Coming Soon",
+        keywords: ["password"],
+        url: "#"
+    },
+
+    {
+        name: "Deepfake Detector",
+        description: "Coming Soon",
+        keywords: ["deepfake", "image"],
+        url: "#"
+    },
+
+    {
+        name: "Privacy Scanner",
+        description: "Coming Soon",
+        keywords: ["privacy"],
+        url: "#"
+    },
+
+    {
+        name: "History",
+        description: "View previous scans.",
+        keywords: ["history", "activity"],
+        url: "#"
+    },
+
+    {
+        name: "Settings",
+        description: "Application settings.",
+        keywords: ["settings", "preferences"],
+        url: "#"
+    }
+
+];
+</script>
+
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+
 {% block scripts %}
 {% endblock %}
+
+</body>
 </html>

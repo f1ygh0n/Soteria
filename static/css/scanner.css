@@ -1126,3 +1126,62 @@
     }
 
 }
+
+.email-box input,
+.email-box textarea {
+
+    width: 100%;
+
+    background: #10151B;
+
+    color: white;
+
+    border: 1px solid #2E353F;
+
+    border-radius: 18px;
+
+    padding: 22px 28px;
+
+    font-size: 16px;
+
+    font-family: "Inter", sans-serif;
+
+    transition: .25s;
+
+    box-sizing: border-box;
+
+}
+
+.email-box textarea {
+
+    min-height: 420px;
+
+    resize: vertical;
+
+    line-height: 1.8;
+
+}
+
+.email-box input {
+
+    height: 62px;
+
+}
+
+.email-box input:focus,
+.email-box textarea:focus {
+
+    outline: none;
+
+    border-color: #6D7683;
+
+    box-shadow: 0 0 0 4px rgba(255,255,255,.03);
+
+}
+
+.email-box input::placeholder,
+.email-box textarea::placeholder {
+
+    color: #7A828D;
+
+}

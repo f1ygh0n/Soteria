@@ -12,13 +12,9 @@
 
         <div class="search-box">
 
-            <img src="{{ url_for('static', filename='images/icons/search.svg') }}"
-                 class="search-icon"
-                 alt="Search">
+            <input id="globalSearch" type="text" placeholder="Search Soteria...">
 
-            <input
-                type="text"
-                placeholder="Search modules...">
+            <div id="searchDropdown" class="search-dropdown hidden"></div>
 
         </div>
 

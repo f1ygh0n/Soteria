@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    <form method="POST">
+
+        <div class="email-container">
+
+            <div class="email-box">
+
+                <label>Website URL</label>
+
+                <input type="text" id="urlInput" name="url" placeholder="https://example.com/login" value="{{ url }}">
+
+            </div>
+
+            <button type="submit" class="scan-button">
+
+                <img src="{{ url_for('static', filename='images/icons/scan-search.svg') }}"
+                     class="button-icon">
+
+                <span>Analyze Website</span>
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

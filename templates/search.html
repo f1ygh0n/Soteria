@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    <div class="search-results-container">
+
+        <div class="search-header">
+            <p>
+                {% if results %}
+                    Found {{ results|length }} result{{ '' if results|length == 1 else 's' }} for
+                    <strong>"{{ query }}"</strong>
+                {% else %}
+                    No results found for
+                    <strong>"{{ query }}"</strong>
+                {% endif %}
+            </p>
+
+        </div>
+
+        {% if results %}
+
+            <div class="results-list">
+
+                {% for result in results %}
+
+                    <a href="{{ result.url }}" class="result-card">
+
+                        <div>
+
+                            <h3>{{ result.name }}</h3>
+
+                            <p>{{ result.description }}</p>
+
+                        </div>
+
+                        <img
+                            src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+                            class="result-arrow">
+
+                    </a>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="no-results">
+
+                <img
+                    src="{{ url_for('static', filename='images/icons/search.svg') }}"
+                    class="no-results-icon">
+
+                <h3>Nothing matched your search.</h3>
+
+                <p>
+                    Try searching for things like
+                    <strong>Email</strong>,
+                    <strong>Website</strong>,
+                    <strong>Password</strong>,
+                    or
+                    <strong>Dashboard</strong>.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
