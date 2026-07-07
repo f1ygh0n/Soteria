@@ -64,13 +64,19 @@ class GmailClient:
 
         return emails
     
-    def get_email_body(self, message_id):
+    def get_email_data(self, message_id):
 
         message = self.service.users().messages().get(
             userId="me",
             id=message_id,
             format="full"
         ).execute()
+
+        headers = {}
+
+        for header in message["payload"].get("headers", []):
+
+            headers[header["name"]] = header["value"]
 
         def extract(parts):
 
@@ -111,7 +117,7 @@ class GmailClient:
 
                         return result
 
-            return None
+            return ""
 
         payload = message["payload"]
 
@@ -127,4 +133,22 @@ class GmailClient:
                 data
             ).decode("utf-8", errors="ignore")
 
-        return body
+        return {
+
+            "from": headers.get("From", ""),
+
+            "to": headers.get("To", ""),
+
+            "reply_to": headers.get("Reply-To", ""),
+
+            "return_path": headers.get("Return-Path", ""),
+
+            "subject": headers.get("Subject", ""),
+
+            "date": headers.get("Date", ""),
+
+            "body": body,
+
+            "headers": headers
+
+        }

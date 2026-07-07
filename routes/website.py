@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, request
 
+from utils.website_rules import analyze_website
+from ai.website_ai import analyze_website_ai
+
 website_bp = Blueprint("website", __name__)
 
 
@@ -10,12 +13,27 @@ def website():
     url = ""
 
     if request.method == "POST":
-        url = request.form.get("url", "")
+
+        url = request.form.get("url", "").strip()
+
+        rules = analyze_website(url)
+
+        ai = analyze_website_ai(rules)
+
+        result = {
+
+            **rules,
+
+            "ai": ai,
+
+            "ai_used": True
+
+        }
 
     return render_template(
         "website.html",
         page_title="Website Checker",
-        page_subtitle="Analyze URLs to spot fraud attempts.",
-        url=url,
-        result=result
+        page_subtitle="Analyze websites for phishing and scams.",
+        result=result,
+        url=url
     )

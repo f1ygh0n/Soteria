@@ -4,7 +4,7 @@
 
 <div class="page-container">
 
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" class="scan-form">
 
         <div class="email-container">
 
@@ -57,11 +57,12 @@
 
             </div>
 
-            <button type="submit" class="scan-button">
+            <button type="submit" class="scan-button scan-submit">
 
-                <img src="{{ url_for('static', filename='images/icons/scan-search.svg') }}" class="button-icon">
+                <img src="{{ url_for('static', filename='images/icons/scan-search.svg') }}" class="button-icon scan-icon">
+                <div class="button-spinner hidden"></div>
 
-                <span>Run Security Scan</span>
+                <span class="scan-text">Run Security Scan</span>
 
             </button>
 

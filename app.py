@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_session import Session
 
+import whois
 import os
 
 # REMOVE THIS LINE BEFORE DEPLOYING TO PRODUCTION
@@ -22,7 +23,7 @@ from routes.search import search_bp
 
 app.register_blueprint(home_bp)
 app.register_blueprint(email_bp)
-app.register_blueprint(gmail_bp)
+app.register_blueprint(gmail_bp)    
 app.register_blueprint(website_bp)
 app.register_blueprint(search_bp)
 

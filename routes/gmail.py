@@ -85,10 +85,6 @@ def gmail_email(message_id):
 
     gmail = GmailClient(credentials)
 
-    body = gmail.get_email_body(message_id)
+    email_data = gmail.get_email_data(message_id)
 
-    return jsonify({
-
-        "body": body
-
-    })
+    return jsonify(email_data)

@@ -1185,3 +1185,61 @@
     color: #7A828D;
 
 }
+
+.input-hint {
+
+    margin-top: 14px;
+
+    padding: 14px 18px;
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid #2C3139;
+
+    border-left: 4px solid #5D6773;
+
+    border-radius: 12px;
+
+    color: #A9B1BC;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+.button-spinner {
+
+    width:18px;
+    height:18px;
+
+    border:2px solid rgba(255,255,255,.25);
+    border-top:2px solid white;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+.hidden {
+
+    display:none;
+
+}
+
+@keyframes spin {
+
+    from {
+
+        transform:rotate(0deg);
+
+    }
+
+    to {
+
+        transform:rotate(360deg);
+
+    }
+
+}

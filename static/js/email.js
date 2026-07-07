@@ -10,8 +10,6 @@ const gmailModal = document.getElementById("gmailModal");
 const gmailList = document.getElementById("gmailList");
 const closeModal = document.getElementById("closeModal");
 
-const gmailSearch = document.getElementById("gmailSearch");
-
 function getRelativeTime(dateString) {
 
     const now = new Date();
@@ -205,7 +203,17 @@ if (gmailButton) {
 
                         const data = await response.json();
 
-                        textarea.value = data.body;
+                        console.log(data);
+
+                        textarea.value =
+                            `From: ${data.from}
+                            To: ${data.to}
+                            Reply-To: ${data.reply_to}
+                            Return-Path: ${data.return_path}
+                            Subject: ${data.subject}
+                            Date: ${data.date}
+
+                            ${data.body}`;
 
                         gmailModal.classList.add("hidden");
 

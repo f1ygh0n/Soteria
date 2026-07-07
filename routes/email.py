@@ -4,7 +4,9 @@ from flask import jsonify
 from email import policy
 from email.parser import BytesParser
 
-from ai.ai_analyzer import AIAnalyzer, should_use_ai
+from utils.email_parser import parse_eml, parse_pasted_email
+
+from ai.email_ai import AIAnalyzer, should_use_ai
 from ai.threat_engine import analyze_email_rules
 
 email_bp = Blueprint("email", __name__)
@@ -172,6 +174,8 @@ def email():
 
         if email_text and result is None:
 
+            email_data = parse_pasted_email(email_text)
+
             rules = analyze_email_rules(email_text)
 
             result = {
@@ -184,7 +188,7 @@ def email():
 
                 try:
 
-                    ai_result = ai.analyze_email(email_text)
+                    ai_result = ai.analyze_email(email_data)
 
                     result["ai_used"] = True
                     result["ai"] = ai_result

@@ -4,7 +4,7 @@
 
 <div class="page-container">
 
-    <form method="POST">
+    <form method="POST" class="scan-form">
 
         <div class="email-container">
 
@@ -12,22 +12,130 @@
 
                 <label>Website URL</label>
 
-                <input type="text" id="urlInput" name="url" placeholder="https://example.com/login" value="{{ url }}">
+                <input
+                    type="text"
+                    id="urlInput"
+                    name="url"
+                    placeholder="https://example.com/login"
+                    value="{{ url }}">
+
+                <p class="input-hint">
+                    Enter a website URL to analyze for phishing, HTTPS, suspicious keywords,
+                    redirects and other security indicators.
+                </p>
 
             </div>
 
-            <button type="submit" class="scan-button">
+            <button type="submit" class="scan-button scan-submit">
 
-                <img src="{{ url_for('static', filename='images/icons/scan-search.svg') }}"
-                     class="button-icon">
+                <img src="{{ url_for('static', filename='images/icons/scan-search.svg') }}" class="button-icon scan-icon">
+                <div class="button-spinner hidden"></div>
 
-                <span>Analyze Website</span>
+                <span class="scan-text">Analyze Website</span>
 
             </button>
 
         </div>
 
     </form>
+
+    {% if result %}
+
+    <div class="scan-results">
+
+        <h2>Scan Results</h2>
+
+        <div class="result-section">
+
+            <h3>Threat Engine</h3>
+
+            <p>
+                <strong>Risk Score:</strong>
+                {{ result.risk_score }}/100
+            </p>
+
+            <p>
+                <strong>Verdict:</strong>
+
+                <span class="
+                    {% if result.quick_verdict == 'HIGH' %}
+                        risk-high
+                    {% elif result.quick_verdict == 'SUSPICIOUS' %}
+                        risk-medium
+                    {% else %}
+                        risk-low
+                    {% endif %}
+                ">
+                    {{ result.quick_verdict }}
+                </span>
+
+            </p>
+
+            <br>
+
+            <h4>Detected Indicators</h4>
+
+            {% if result.flags %}
+
+                <ul class="flags-list">
+
+                    {% for flag in result.flags %}
+
+                        <li>{{ flag }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>No suspicious indicators detected.</p>
+
+            {% endif %}
+
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>AI Analysis</h3>
+
+            <p>
+
+                <strong>Threat Level:</strong>
+
+                <span class="
+                    {% if result.ai.threat_level == 'HIGH' %}
+                        risk-high
+                    {% elif result.ai.threat_level == 'SUSPICIOUS' %}
+                        risk-medium
+                    {% else %}
+                        risk-low
+                    {% endif %}
+                ">
+                    {{ result.ai.threat_level }}
+                </span>
+
+            </p>
+
+            <p>{{ result.ai.summary }}</p>
+
+            {% if not result.ai_used %}
+
+                <p style="opacity:.7;font-size:14px;margin-top:12px;">
+
+                    AI was skipped or unavailable. Displaying the rule engine's assessment.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
 
 </div>
 
