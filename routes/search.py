@@ -23,9 +23,9 @@ PAGES = [
     },
     {
         "name": "Chat Detector",
-        "description": "Coming Soon",
+        "description": "Detect scams in chats and conversations.",
         "keywords": ["chat", "message"],
-        "url": "#"
+        "url": "/chat"
     },
     {
         "name": "Password Analyzer",
