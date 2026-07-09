@@ -107,4 +107,6 @@ Return ONLY valid JSON.
 
     "recommendation": "..."
 }
+
+Don't make summary or reasons too long.
 """
