@@ -4,141 +4,231 @@
 
 <section class="overview">
 
-    <div class="card">
-        <h3>Threat Level</h3>
-        <h1>🟢 LOW</h1>
-    </div>
+<div class="card">
 
-    <div class="card">
-        <h3>Today's Scans</h3>
-        <h1>0</h1>
-    </div>
+    <img
+        src="{{ url_for('static', filename='images/icons/shield-check.svg') }}"
+        class="module-icon"
+        alt="Privacy">
 
-    <div class="card">
-        <h3>Threats Detected</h3>
-        <h1>0</h1>
-    </div>
+    <h3>Privacy First</h3>
 
-    <div class="card">
-        <h3>System Status</h3>
-        <h1>Healthy</h1>
-    </div>
+    <p>
+        Password analysis is performed locally and sensitive data is never stored.
+    </p>
+
+</div>
+
+<div class="card">
+
+    <img
+        src="{{ url_for('static', filename='images/icons/zap.svg') }}"
+        class="module-icon"
+        alt="Performance">
+
+    <h3>Fast Analysis</h3>
+
+    <p>
+        Rule-based detection provides instant results while AI is only used when needed.
+    </p>
+
+</div>
+
+<div class="card">
+
+    <img
+        src="{{ url_for('static', filename='images/icons/sparkles.svg') }}"
+        class="module-icon"
+        alt="AI">
+
+    <h3>AI Assisted</h3>
+
+    <p>
+        Gemini 2.5 Flash helps analyze complex threats while local engines handle obvious cases.
+    </p>
+
+</div>
+
+<div class="card">
+
+    <img
+        src="{{ url_for('static', filename='images/icons/layout-grid.svg') }}"
+        class="module-icon"
+        alt="Toolkit">
+
+    <h3>Growing Toolkit</h3>
+
+    <p>
+        Email, Website, Chat and Password analysis with more security modules coming soon.
+    </p>
+
+</div>
 
 </section>
 
 <section class="modules">
 
-    <a href="{{ url_for('email.email') }}" class="module-card-link">
-
-        <div class="module-card">
-
-            <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
-                class="module-arrow"
-                alt="Open">
-
-            <img src="{{ url_for('static', filename='images/icons/mail.svg') }}"
-                class="module-icon"
-                alt="Email">
-
-            <h3>Email Scanner</h3>
-
-            <p>Analyze suspicious emails using AI and rule-based detection.</p>
-
-        </div>
-
-    </a>
-
-    <a href="{{ url_for('website.website') }}" class="module-link">
-
-        <div class="module-card">
-
-            <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
-                class="module-arrow"
-                alt="Open">
-
-            <img src="{{ url_for('static', filename='images/icons/globe.svg') }}"
-                class="module-icon"
-                alt="Website">
-
-            <h3>Website Checker</h3>
-
-            <p>Inspect URLs for malicious or deceptive websites.</p>
-
-        </div>
-
-    </a>
+<a href="{{ url_for('email.email') }}" class="module-card-link">
 
     <div class="module-card">
 
-        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
-             class="module-arrow"
-             alt="Open">
+        <img
+            src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+            class="module-arrow"
+            alt="Open">
 
-        <img src="{{ url_for('static', filename='images/icons/message-square.svg') }}"
-             class="module-icon"
-             alt="Chat">
+        <img
+            src="{{ url_for('static', filename='images/icons/mail.svg') }}"
+            class="module-icon"
+            alt="Email">
 
-        <h3>Chat Detector</h3>
+        <span class="module-badge">
+            AI + Rule Engine
+        </span>
 
-        <p>Identify AI-powered scams and social engineering.</p>
+        <h3>Email Scanner</h3>
+
+        <p>
+            Analyze suspicious emails, Gmail messages and .eml files for phishing and scams.
+        </p>
 
     </div>
 
+</a>
+
+<a href="{{ url_for('website.website') }}" class="module-card-link">
+
     <div class="module-card">
 
-        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
-             class="module-arrow"
-             alt="Open">
+        <img
+            src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+            class="module-arrow"
+            alt="Open">
 
-        <img src="{{ url_for('static', filename='images/icons/key-round.svg') }}"
-             class="module-icon"
-             alt="Password">
+        <img
+            src="{{ url_for('static', filename='images/icons/globe.svg') }}"
+            class="module-icon"
+            alt="Website">
+
+        <span class="module-badge">
+            AI + WHOIS
+        </span>
+
+        <h3>Website Checker</h3>
+
+        <p>
+            Inspect URLs for phishing, fake domains and other suspicious website indicators.
+        </p>
+
+    </div>
+
+</a>
+
+<a href="{{ url_for('chat.chat') }}" class="module-card-link">
+
+    <div class="module-card">
+
+        <img
+            src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+            class="module-arrow"
+            alt="Open">
+
+        <img
+            src="{{ url_for('static', filename='images/icons/message-square.svg') }}"
+            class="module-icon"
+            alt="Chat">
+
+        <span class="module-badge">
+            OCR + AI
+        </span>
+
+        <h3>Chat Scam Detector</h3>
+
+        <p>
+            Detect scams, impersonation and social engineering in pasted chats or screenshots.
+        </p>
+
+    </div>
+
+</a>
+
+<a href="{{ url_for('password.password') }}" class="module-card-link">
+
+    <div class="module-card">
+
+        <img
+            src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
+            class="module-arrow"
+            alt="Open">
+
+        <img
+            src="{{ url_for('static', filename='images/icons/key-round.svg') }}"
+            class="module-icon"
+            alt="Password">
+
+        <span class="module-badge">
+            Local Analysis
+        </span>
 
         <h3>Password Analyzer</h3>
 
-        <p>Evaluate password strength and security.</p>
+        <p>
+            Evaluate password strength, entropy, common patterns and estimated crack time.
+        </p>
 
     </div>
 
-    <div class="module-card">
+</a>
 
-        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
-             class="module-arrow"
-             alt="Open">
+<div class="module-card disabled-module">
 
-        <img src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
-             class="module-icon"
-             alt="Deepfake">
+    <img
+        src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
+        class="module-icon"
+        alt="Deepfake">
 
-        <h3>Deepfake Detector</h3>
+    <span class="module-badge module-coming">
+        Coming Soon
+    </span>
 
-        <p>Prototype tool for detecting manipulated images.</p>
+    <h3>Deepfake Detector</h3>
 
-    </div>
+    <p>
+        Detect manipulated images and AI-generated media.
+    </p>
 
-    <div class="module-card">
+</div>
 
-        <img src="{{ url_for('static', filename='images/icons/external-link.svg') }}"
-             class="module-arrow"
-             alt="Open">
+<div class="module-card disabled-module">
 
-        <img src="{{ url_for('static', filename='images/icons/shield-check.svg') }}"
-             class="module-icon"
-             alt="Privacy">
+    <img
+        src="{{ url_for('static', filename='images/icons/shield-check.svg') }}"
+        class="module-icon"
+        alt="Privacy">
 
-        <h3>Privacy Scanner</h3>
+    <span class="module-badge module-coming">
+        Coming Soon
+    </span>
 
-        <p>Check for exposed personal information and privacy risks.</p>
+    <h3>Privacy Scanner</h3>
 
-    </div>
+    <p>
+        Discover exposed personal information and privacy risks.
+    </p>
+
+</div>
 
 </section>
 
 <section class="activity">
 
-    <h2>Recent Activity</h2>
+<h2>About Soteria</h2>
 
-    <p>No scans yet.</p>
+<p>
+    Soteria is an AI-powered cybersecurity toolkit designed to help users identify phishing emails,
+    malicious websites, online scams and weak passwords through a combination of local security
+    analysis and AI-assisted threat detection.
+</p>
 
 </section>
 

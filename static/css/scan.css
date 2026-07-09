@@ -1314,3 +1314,80 @@
     flex: 0 0 240px;
 
 }
+.privacy-notice {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-top: 20px;
+
+    margin-bottom: 20px;
+
+    padding: 18px 22px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-left: 4px solid #4ade80;
+
+    border-radius: 14px;
+
+    transition: 0.2s ease;
+
+}
+
+.privacy-notice:hover {
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border-color: rgba(255, 255, 255, 0.12);
+
+}
+
+.privacy-icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    flex-shrink: 0;
+
+    opacity: 0.95;
+
+}
+
+.privacy-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.privacy-content h4 {
+
+    margin: 0 0 4px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+
+}
+
+.privacy-content p {
+
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    color: rgba(255, 255, 255, 0.72);
+
+}

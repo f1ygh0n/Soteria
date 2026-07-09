@@ -29,9 +29,9 @@ PAGES = [
     },
     {
         "name": "Password Analyzer",
-        "description": "Coming Soon",
+        "description": "Analyze password strength without storing or transmitting your password.",
         "keywords": ["password"],
-        "url": "#"
+        "url": "/password"
     },
     {
         "name": "Deepfake Detector",

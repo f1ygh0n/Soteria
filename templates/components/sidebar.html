@@ -2,8 +2,10 @@
 
     <div class="logo">
         <img
-            src="{{ url_for('static', filename='images/logo-transparent.svg') }}"
+            src="{{ url_for('static', filename='images/shield.svg') }}"
             alt="Soteria Logo">
+        
+        <h1>soteria.ai</h1>
     </div>
 
     <nav class="navigation">
@@ -42,7 +44,9 @@
             <span>Chat Detector</span>
         </a>
 
-        <a href="#">
+        <a href="{{ url_for('password.password') }}"
+            class="{% if request.endpoint == 'password.password' %}active{% endif %}">
+
             <img src="{{ url_for('static', filename='images/icons/key-round.svg') }}"
                  class="nav-icon"
                  alt="Password">

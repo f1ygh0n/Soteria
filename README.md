@@ -41,7 +41,7 @@ Analyzes chats from WhatsApp, Discord, SMS and similar platforms. Detects urgenc
 ## 10. Deepfake Detector
 Prototype that analyzes uploaded images for visual inconsistencies and provides a confidence score.
 
-## 11. Password Strength Predictor
+## 11. Password Analyzer
 Evaluates password complexity, dictionary words, patterns and estimated crack time.
 
 ## 12. Privacy Scanner
