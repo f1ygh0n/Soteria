@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <div class="email-container">
+
+            <div class="input-methods">
+
+                <button
+                    type="button"
+                    id="pasteButton"
+                    class="method-button active">
+
+                    <img
+                        src="{{ url_for('static', filename='images/icons/copy.svg') }}"
+                        class="button-icon">
+
+                    <span>Paste Chat</span>
+
+                </button>
+
+                <button
+                    type="button"
+                    id="uploadButton"
+                    class="method-button">
+
+                    <img
+                        src="{{ url_for('static', filename='images/icons/upload.svg') }}"
+                        class="button-icon">
+
+                    <span>Upload Screenshot</span>
+
+                </button>
+
+                <input
+                    type="file"
+                    id="chatUpload"
+                    name="chat_image"
+                    accept="image/*"
+                    hidden>
+
+            </div>
+
+            <div class="email-box">
+
+                <label>Chat Conversation</label>
+
+                <textarea
+                    id="chatInput"
+                    name="chat_text"
+                    placeholder="Paste a WhatsApp, Discord, Telegram, SMS or other conversation here...">{{ chat_text }}</textarea>
+
+                <p class="input-hint">
+                    Paste a conversation or upload a screenshot. Screenshots are automatically processed using OCR before analysis.
+                </p>
+
+            </div>
+
+            <button
+                type="submit"
+                class="scan-button scan-submit">
+
+                <img
+                    src="{{ url_for('static', filename='images/icons/scan-search.svg') }}"
+                    class="button-icon scan-icon">
+
+                <div class="button-spinner hidden"></div>
+
+                <span class="scan-text">
+                    Analyze Chat
+                </span>
+
+            </button>
+
+        </div>
+
+    </form>
+
+    {% if result %}
+
+    <div class="scan-results">
+
+        <h2>Scan Results</h2>
+
+        <div class="result-section">
+
+            <h3>Threat Engine</h3>
+
+            <p>
+
+                <strong>Risk Score:</strong>
+
+                {{ result.rules.risk_score }}/100
+
+            </p>
+
+            <p>
+
+                <strong>Verdict:</strong>
+
+                <span class="
+                    {% if result.rules.quick_verdict == 'HIGH' %}
+                        risk-high
+                    {% elif result.rules.quick_verdict == 'SUSPICIOUS' %}
+                        risk-medium
+                    {% else %}
+                        risk-low
+                    {% endif %}
+                ">
+
+                    {{ result.rules.quick_verdict }}
+
+                </span>
+
+            </p>
+
+            <br>
+
+            <h4>Detected Indicators</h4>
+
+            {% if result.rules.flags %}
+
+                <ul class="flags-list">
+
+                    {% for flag in result.rules.flags %}
+
+                        <li>
+                            {{ flag.replace("_"," ").replace("keyword:","")|title }}
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>No suspicious indicators detected.</p>
+
+            {% endif %}
+
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>AI Assessment</h3>
+
+            <p>
+
+                <strong>Threat Level:</strong>
+
+                <span class="
+                    {% if result.ai.threat_level == 'HIGH' %}
+                        risk-high
+                    {% elif result.ai.threat_level == 'SUSPICIOUS' %}
+                        risk-medium
+                    {% else %}
+                        risk-low
+                    {% endif %}
+                ">
+
+                    {{ result.ai.threat_level }}
+
+                </span>
+
+            </p>
+
+            <p>
+
+                {{ result.ai.summary }}
+
+            </p>
+
+            {% if result.ai.reasons %}
+
+                <h4>Reasons</h4>
+
+                <ul class="flags-list">
+
+                    {% for reason in result.ai.reasons %}
+
+                        <li>{{ reason }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+            {% if result.ai.recommendation %}
+
+                <h4>Recommendation</h4>
+
+                <p>
+
+                    {{ result.ai.recommendation }}
+
+                </p>
+
+            {% endif %}
+
+            {% if not result.ai_used %}
+
+                <p style="opacity:.7;font-size:14px;margin-top:12px;">
+
+                    AI was skipped or unavailable. Displaying the rule engine's assessment.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<div id="ocrOverlay" class="loading-overlay hidden">
+
+    <div class="loading-card">
+
+        <div class="loader"></div>
+
+        <h3>Reading Screenshot...</h3>
+
+        <p>Extracting text using OCR</p>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+
+{% endblock %}

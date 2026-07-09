@@ -33,7 +33,9 @@
             <span>Website Checker</span>
         </a>
 
-        <a href="{{ url_for('chat.chat') }}">
+        <a href="{{ url_for('chat.chat') }}"
+            class="{% if request.endpoint == 'chat.chat' %}active{% endif %}">
+
             <img src="{{ url_for('static', filename='images/icons/message-square.svg') }}"
                  class="nav-icon"
                  alt="Chat">
