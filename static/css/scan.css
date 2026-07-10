@@ -1391,3 +1391,111 @@
     color: rgba(255, 255, 255, 0.72);
 
 }
+
+.password-input-wrapper{
+
+    position:relative;
+
+}
+
+.password-input-wrapper input{
+
+    width:100%;
+
+    padding-right:52px;
+
+}
+
+.toggle-password{
+
+    position:absolute;
+
+    right:14px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:8px;
+
+    transition:.2s;
+
+}
+
+.toggle-password:hover{
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.toggle-password img{
+
+    width:20px;
+
+    opacity:.65;
+
+}
+
+.toggle-password:hover img{
+
+    opacity:1;
+
+}
+
+.check-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+}
+
+.check-icon {
+
+    width: 18px;
+
+    height: 18px;
+
+    flex-shrink: 0;
+
+}
+
+.check-icon.success {
+
+    opacity: .9;
+
+    filter: brightness(1.1);
+
+}
+
+.check-icon.failed {
+
+    opacity: .7;
+
+}
+
+.check-item span {
+
+    color: #D5DBE3;
+
+}
