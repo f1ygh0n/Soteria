@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request
 
 from utils.password_rules import analyze_password
-from utils.password_generator import generate_suggestions
 
 password_bp = Blueprint("password", __name__)
 
@@ -23,10 +22,6 @@ def password():
         if password_text:
 
             result = analyze_password(password_text)
-
-            result["generated_passwords"] = generate_suggestions(
-                password_text
-            )
 
     return render_template(
 
