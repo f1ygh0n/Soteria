@@ -1499,3 +1499,233 @@
     color: #D5DBE3;
 
 }
+
+.upload-area {
+
+    margin-bottom: 28px;
+
+}
+
+.upload-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    min-height: 260px;
+
+    padding: 40px;
+
+    border: 2px dashed #3B4450;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        180deg,
+        #181E26,
+        #141920
+    );
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+}
+
+.upload-box:hover {
+
+    border-color: #5B6674;
+
+    background: linear-gradient(
+        180deg,
+        #1C232C,
+        #161B22
+    );
+
+    transform: translateY(-3px);
+
+}
+
+.upload-icon {
+
+    width: 54px;
+
+    opacity: .8;
+
+}
+
+.upload-box h3 {
+
+    margin: 0;
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+}
+
+.upload-box p {
+
+    margin: 0;
+
+    color: #9CA3AF;
+
+    line-height: 1.6;
+
+}
+
+.upload-box span {
+
+    color: #6B7280;
+
+    font-size: 13px;
+
+    letter-spacing: .5px;
+
+}
+
+.image-preview {
+
+    margin: 30px 0;
+
+    padding: 22px;
+
+    border: 1px solid #2A313A;
+
+    border-radius: 18px;
+
+    background: #141920;
+
+}
+
+.image-preview h3 {
+
+    margin: 0 0 18px;
+
+    color: white;
+
+}
+
+.image-preview img {
+
+    width: 100%;
+
+    max-height: 500px;
+
+    object-fit: contain;
+
+    border-radius: 14px;
+
+    border: 1px solid #2F3742;
+
+    background: #0F1318;
+
+}
+
+.visual-score {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 22px;
+
+}
+
+.visual-score h3 {
+
+    margin: 0;
+
+    color: white;
+
+}
+
+.visual-score-value {
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    color: white;
+
+}
+
+.check-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 18px;
+
+    margin-top: 20px;
+
+}
+
+.check-card {
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    border: 1px solid #2A313A;
+
+    background: linear-gradient(
+        180deg,
+        #181E26,
+        #141920
+    );
+
+    transition: .25s;
+
+}
+
+.check-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: #596575;
+
+}
+
+.check-card h4 {
+
+    margin: 0 0 12px;
+
+    color: white;
+
+    font-size: 17px;
+
+}
+
+.check-card p {
+
+    margin: 0;
+
+    color: #A2ABB7;
+
+    line-height: 1.6;
+
+}
+
+.prototype-notice {
+
+    margin-top: 30px;
+
+}

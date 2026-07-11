@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <div class="email-container">
+
+            <div class="upload-area">
+
+                <label for="imageUpload" class="upload-box">
+
+                    <img
+                        src="{{ url_for('static', filename='images/icons/upload.svg') }}"
+                        class="upload-icon">
+
+                    <h3>Upload an Image</h3>
+
+                    <p>
+                        Drag & drop an image or click to browse.
+                    </p>
+
+                    <span>
+                        PNG • JPG • JPEG • WEBP
+                    </span>
+
+                </label>
+
+                <input
+                    type="file"
+                    id="imageUpload"
+                    name="image"
+                    accept="image/*"
+                    hidden>
+
+            </div>
+
+            {% if image_path %}
+
+            <div class="image-preview">
+
+                <h3>Uploaded Image</h3>
+
+                <img
+                    src="{{ image_path }}"
+                    alt="Uploaded Image">
+
+            </div>
+
+            {% endif %}
+
+            <button
+                type="submit"
+                class="scan-button scan-submit">
+
+                <img
+                    src="{{ url_for('static', filename='images/icons/scan-search.svg') }}"
+                    class="button-icon scan-icon">
+
+                <div class="button-spinner hidden"></div>
+
+                <span class="scan-text">
+
+                    Analyze Image
+
+                </span>
+
+            </button>
+
+        </div>
+
+    </form>
+
+    {% if result %}
+
+    <div class="scan-results">
+
+        <h2>Visual Authenticity Score</h2>
+
+        <div class="result-section">
+
+            <div class="password-score">
+
+                <span class="score-number">
+
+                    {{ result.score }}%
+
+                </span>
+
+                <span class="
+                    {% if result.score >= 80 %}
+                        risk-low
+                    {% elif result.score >= 50 %}
+                        risk-medium
+                    {% else %}
+                        risk-high
+                    {% endif %}
+                ">
+
+                    {{ result.verdict }}
+
+                </span>
+
+            </div>
+
+            <div class="strength-bar">
+
+                <div
+                    class="strength-fill"
+                    style="width: {{ result.score }}%;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>Assessment</h3>
+
+            <p>
+
+                {{ result.summary }}
+
+            </p>
+
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>Visual Checks</h3>
+
+            <div class="stats-grid">
+
+                {% for check in result.checks %}
+
+                <div class="stat-card">
+
+                    <span class="stat-title">
+
+                        {{ check.name }}
+
+                    </span>
+
+                    <span class="stat-value">
+
+                        {{ check.status }}
+
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="privacy-notice">
+
+            <img
+                src="{{ url_for('static', filename='images/icons/info.svg') }}"
+                class="privacy-icon">
+
+            <div class="privacy-content">
+
+                <h4>Prototype Notice</h4>
+
+                <p>
+
+                    Deepfake detection is probabilistic.
+                    This tool searches for visual inconsistencies that may indicate manipulation, but it cannot conclusively determine authenticity.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/deepfake.js') }}"></script>
+
+{% endblock %}

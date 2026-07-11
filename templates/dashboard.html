@@ -180,24 +180,28 @@
 
 </a>
 
-<div class="module-card disabled-module">
+<a href="{{ url_for('deepfake.deepfake') }}" class="module-card-link">
 
-    <img
-        src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
-        class="module-icon"
-        alt="Deepfake">
+    <div class="module-card">
 
-    <span class="module-badge module-coming">
-        Coming Soon
-    </span>
+        <img
+            src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
+            class="module-icon"
+            alt="Deepfake">
 
-    <h3>Deepfake Detector</h3>
+        <span class="module-badge">
+            OpenCV + Pillow
+        </span>
 
-    <p>
-        Detect manipulated images and AI-generated media.
-    </p>
+        <h3>Deepfake Detector</h3>
 
-</div>
+        <p>
+            Analyze images for visual artifacts commonly associated with AI-generated content.
+        </p>
+
+    </div>
+
+</a>
 
 <div class="module-card disabled-module">
 

@@ -53,7 +53,9 @@
             <span>Password Analyzer</span>
         </a>
 
-        <a href="#">
+        <a href="{{ url_for('deepfake.deepfake') }}"
+            class="{% if request.endpoint == 'deepfake.deepfake' %}active{% endif %}">
+
             <img src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
                  class="nav-icon"
                  alt="Deepfake">

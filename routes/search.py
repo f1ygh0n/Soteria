@@ -35,9 +35,9 @@ PAGES = [
     },
     {
         "name": "Deepfake Detector",
-        "description": "Coming Soon",
+        "description": "Analyze uploaded images for visual inconsistencies commonly associated with AI-generated or manipulated content.",
         "keywords": ["deepfake", "image"],
-        "url": "#"
+        "url": "/deepfake"
     },
     {
         "name": "Privacy Scanner",

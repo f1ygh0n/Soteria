@@ -22,6 +22,7 @@ from routes.website import website_bp
 from routes.search import search_bp
 from routes.chat import chat_bp
 from routes.password import password_bp
+from routes.deepfake import deepfake_bp
 
 app.register_blueprint(home_bp)
 app.register_blueprint(email_bp)
@@ -30,6 +31,7 @@ app.register_blueprint(website_bp)
 app.register_blueprint(search_bp)
 app.register_blueprint(chat_bp)
 app.register_blueprint(password_bp)
+app.register_blueprint(deepfake_bp)
 
 if __name__ == "__main__":
     app.run(debug=True) 
