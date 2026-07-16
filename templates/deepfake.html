@@ -13,8 +13,14 @@
                 <label for="imageUpload" class="upload-box">
 
                     <img
+                        id="uploadIcon"
                         src="{{ url_for('static', filename='images/icons/upload.svg') }}"
                         class="upload-icon">
+
+                    <img
+                        id="previewImage"
+                        class="preview-image hidden"
+                        alt="Preview">
 
                     <h3>Upload an Image</h3>
 
@@ -77,41 +83,48 @@
 
     <div class="scan-results">
 
-        <h2>Visual Authenticity Score</h2>
-
         <div class="result-section">
 
-            <div class="password-score">
+            <div class="ai-model-card">
 
-                <span class="score-number">
+                <div class="ai-model-header">
 
-                    {{ result.score }}%
+                    <img
+                        src="{{ url_for('static', filename='images/icons/scan-face.svg') }}"
+                        class="privacy-icon">
 
-                </span>
+                    <div>
 
-                <span class="
-                    {% if result.score >= 80 %}
-                        risk-low
-                    {% elif result.score >= 50 %}
-                        risk-medium
-                    {% else %}
-                        risk-high
-                    {% endif %}
-                ">
+                        <h3>Gemini Vision Analysis</h3>
 
-                    {{ result.verdict }}
+                        <span class="
+                        {% if 'Authentic' in result.ai.label %}
+                            risk-low
+                        {% elif 'Possible' in result.ai.label or 'Review' in result.ai.label %}
+                            risk-medium
+                        {% else %}
+                            risk-high
+                        {% endif %}
+                        ai-label
+                        ">
+                            {{ result.ai.label }}
+                        </span>
 
-                </span>
-
-            </div>
-
-            <div class="strength-bar">
-
-                <div
-                    class="strength-fill"
-                    style="width: {{ result.score }}%;">
+                    </div>
 
                 </div>
+
+                <div class="ai-confidence">
+
+                    {{ result.ai.probability }}%
+
+                </div>
+
+                <p>
+
+                    {{ result.ai.reason }}
+
+                </p>
 
             </div>
 
@@ -121,45 +134,29 @@
 
         <div class="result-section">
 
-            <h3>Assessment</h3>
+            <h3>Algorithmic Forensic Analysis</h3>
 
-            <p>
+            <div class="forensics-grid">
 
-                {{ result.summary }}
+            {% for check in result.checks %}
 
-            </p>
+            <div class="forensic-card">
 
-        </div>
+                <span class="forensic-name">
 
-        <hr>
+                    {{ check.name }}
 
-        <div class="result-section">
+                </span>
 
-            <h3>Visual Checks</h3>
+                <span class="forensic-status">
 
-            <div class="stats-grid">
+                    {{ check.status }}
 
-                {% for check in result.checks %}
-
-                <div class="stat-card">
-
-                    <span class="stat-title">
-
-                        {{ check.name }}
-
-                    </span>
-
-                    <span class="stat-value">
-
-                        {{ check.status }}
-
-                    </span>
-
-                </div>
-
-                {% endfor %}
+                </span>
 
             </div>
+
+            {% endfor %}
 
         </div>
 

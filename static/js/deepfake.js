@@ -10,12 +10,6 @@ const uploadText = uploadBox.querySelector("p");
 
 const uploadTypes = uploadBox.querySelector("span");
 
-const previewContainer = document.querySelector(".image-preview");
-
-const previewImage = previewContainer
-    ? previewContainer.querySelector("img")
-    : null;
-
 const submitButton = document.querySelector(".scan-submit");
 
 const spinner = document.querySelector(".button-spinner");
@@ -24,6 +18,9 @@ const scanIcon = document.querySelector(".scan-icon");
 
 const scanText = document.querySelector(".scan-text");
 
+const previewImage = document.getElementById("previewImage");
+
+const uploadIcon = document.getElementById("uploadIcon");
 
 function updatePreview(file) {
 
@@ -43,6 +40,10 @@ function updatePreview(file) {
         if (previewImage) {
 
             previewImage.src = event.target.result;
+
+            previewImage.classList.remove("hidden");
+
+            uploadIcon.style.display = "none";
 
         }
 

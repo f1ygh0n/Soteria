@@ -11,6 +11,13 @@
 
     <title>{{ page_title or "Soteria" }}</title>
 
+    <style>
+    html,
+    body{
+        background:#111;
+    }
+    </style>
+
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +36,18 @@
 </head>
 
 <body>
+
+    <div id="loader">
+
+        <img
+            src="{{ url_for('static', filename='images/shield.svg') }}"
+            class="loader-logo">
+
+        <h1>soteria.ai</h1>
+
+        <p>Protecting You Digitally.</p>
+
+    </div>
 
 <div class="app-layout">
 
@@ -78,16 +97,16 @@ window.APP_PAGES = [
 
     {
         name: "Password Analyzer",
-        description: "Coming Soon",
-        keywords: ["password"],
-        url: "#"
+        description: "Evaluate password strength and identify security weaknesses.",
+        keywords: ["password", "security", "strength"],
+        url: "{{ url_for('password.password') }}"
     },
 
-    {
+   {
         name: "Deepfake Detector",
-        description: "Coming Soon",
-        keywords: ["deepfake", "image"],
-        url: "#"
+        description: "Analyze images for signs of AI-generated or manipulated content.",
+        keywords: ["deepfake", "image", "ai", "photo"],
+        url: "{{ url_for('deepfake.deepfake') }}"
     },
 
     {

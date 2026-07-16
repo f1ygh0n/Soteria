@@ -110,3 +110,37 @@ Return ONLY valid JSON.
 
 Don't make summary or reasons too long.
 """
+
+DEEPFAKE_ANALYSIS_PROMPT = """
+You are an AI image forensic assistant.
+
+Analyze this image and estimate the likelihood that it is AI-generated or manipulated.
+
+Consider:
+- Lighting consistency
+- Facial features and anatomy
+- Hands and fingers
+- Eyes and reflections
+- Text rendering
+- Background artifacts
+- Object geometry
+- Texture consistency
+- Shadow consistency
+- Image composition
+
+Do not assume an image is AI-generated simply because it is stylized, animated, contains no faces, or has low quality.
+
+Important:
+- Do not assume an image is AI-generated because it is artistic, cartoon-like, CGI, or contains no human faces.
+- Base your assessment only on observable visual evidence.
+- If uncertain, choose "Needs Manual Review" rather than making a confident claim.
+- Return a probability from 0–100, where 0 means "very likely authentic" and 100 means "very likely AI-generated or manipulated."
+
+Return ONLY valid JSON in this exact format:
+
+{
+    "probability": 0,
+    "verdict": "Likely AI Generated",
+    "reason": "One concise paragraph explaining your decision."
+}
+"""

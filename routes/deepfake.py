@@ -1,13 +1,11 @@
 from flask import Blueprint, render_template, request
-from werkzeug.utils import secure_filename
-
 import os
+
+from utils.image_rules import analyze_image
 
 deepfake_bp = Blueprint("deepfake", __name__)
 
 UPLOAD_FOLDER = "static/uploads"
-
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 
 @deepfake_bp.route("/deepfake", methods=["GET", "POST"])
@@ -22,64 +20,18 @@ def deepfake():
 
         if image and image.filename:
 
-            filename = secure_filename(image.filename)
+            os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
             filepath = os.path.join(
                 UPLOAD_FOLDER,
-                filename
+                image.filename
             )
 
             image.save(filepath)
 
             image_path = "/" + filepath.replace("\\", "/")
 
-            # Placeholder until detector is implemented
-            result = {
-
-                "score": 78,
-
-                "verdict": "Likely Authentic",
-
-                "summary": (
-                    "Only minor visual inconsistencies were detected. "
-                    "No strong indicators of AI manipulation were found."
-                ),
-
-                "checks": [
-
-                    {
-                        "name": "Face Detection",
-                        "status": "Passed"
-                    },
-
-                    {
-                        "name": "Lighting Consistency",
-                        "status": "Passed"
-                    },
-
-                    {
-                        "name": "Compression Analysis",
-                        "status": "Moderate"
-                    },
-
-                    {
-                        "name": "Metadata",
-                        "status": "Missing"
-                    },
-
-                    {
-                        "name": "Skin Texture",
-                        "status": "Normal"
-                    },
-
-                    {
-                        "name": "Sharpness",
-                        "status": "Normal"
-                    }
-
-                ]
-
-            }
+            result = analyze_image(filepath)
 
     return render_template(
 
@@ -87,7 +39,7 @@ def deepfake():
 
         page_title="Deepfake Detector",
 
-        page_subtitle="Detect manipulated images and AI-generated media.",
+        page_subtitle="Analyze images for signs of manipulation using computer vision.",
 
         result=result,
 

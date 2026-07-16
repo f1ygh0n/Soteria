@@ -9,7 +9,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 app = Flask(__name__)
 
-app.secret_key = "Jyot1r@ditya&Avid@an"
+app.secret_key = os.getenv("SECRET_KEY")
 
 app.config["SESSION_TYPE"] = "filesystem"
 
