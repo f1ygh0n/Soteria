@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_session import Session
+from database.database import init_database
 
 import whois
 import os
@@ -24,6 +25,7 @@ from routes.chat import chat_bp
 from routes.password import password_bp
 from routes.deepfake import deepfake_bp
 from routes.privacy import privacy_bp
+from routes.history import history_bp
 
 app.register_blueprint(home_bp)
 app.register_blueprint(email_bp)
@@ -34,6 +36,8 @@ app.register_blueprint(chat_bp)
 app.register_blueprint(password_bp)
 app.register_blueprint(deepfake_bp)
 app.register_blueprint(privacy_bp)
+app.register_blueprint(history_bp)
 
 if __name__ == "__main__":
+    init_database()
     app.run(debug=False) 

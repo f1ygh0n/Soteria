@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    {% if scans %}
+
+    <div class="history-list">
+
+        {% for scan in scans %}
+
+        <div class="history-card">
+
+            <div class="history-top">
+
+                <div>
+
+                    <h3>{{ scan.module }}</h3>
+
+                    <span class="history-time">
+
+                        {{ scan.timestamp }}
+
+                    </span>
+
+                </div>
+
+                <span class="
+            {% if scan.module == 'Deepfake Detector' %}
+
+                {% if scan.score >= 80 %}
+                    risk-high
+                {% elif scan.score >= 50 %}
+                    risk-medium
+                {% else %}
+                    risk-low
+                {% endif %}
+
+            {% else %}
+
+                {% if scan.score >= 80 %}
+                    risk-low
+                {% elif scan.score >= 50 %}
+                    risk-medium
+                {% else %}
+                    risk-high
+                {% endif %}
+
+            {% endif %}
+        ">
+                    {{ scan.verdict }}
+                </span>
+
+            </div>
+
+            <div class="history-score">
+
+                {{ scan.score }}%
+
+            </div>
+
+            <p class="history-summary">
+
+                {{ scan.summary }}
+
+            </p>
+
+            {% if scan.filename %}
+
+            <div class="history-file">
+
+                📄 {{ scan.filename }}
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-history">
+
+        <img
+            src="{{ url_for('static', filename='images/icons/history.svg') }}"
+            class="empty-icon">
+
+        <h2>No Scan History</h2>
+
+        <p>
+
+            Your completed scans will appear here.
+
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

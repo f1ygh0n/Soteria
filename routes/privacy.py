@@ -7,6 +7,7 @@ from flask import Blueprint, render_template, request
 
 from utils.privacy_rules import analyze_text
 from ai.privacy_ai import analyze_privacy
+from database.database import save_history
 
 privacy_bp = Blueprint("privacy", __name__)
 
@@ -153,6 +154,20 @@ def privacy():
                     "findings": []
 
                 }
+
+    if result:
+
+        save_history(
+
+            module="Privacy Scanner",
+
+            score=result["score"],
+
+            verdict=result["verdict"],
+
+            summary=result["summary"]
+
+        )
 
     return render_template(
 

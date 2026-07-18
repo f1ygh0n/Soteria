@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, jsonify
 from ai.chat_ai import ChatAI
 from utils.chat_rules import analyze_chat_rules
 from utils.chat_ocr import extract_chat_text
+from database.database import save_history
 
 chat_bp = Blueprint("chat", __name__)
 
@@ -161,6 +162,20 @@ def chat():
                         )
 
                     }
+
+    if result:
+
+        save_history(
+
+            module="Chat Scam Detector",
+
+            score=rules["risk_score"],
+
+            verdict=rules["quick_verdict"],
+
+            summary=result["ai"]["summary"]
+
+        )
 
     return render_template(
 

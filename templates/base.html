@@ -25,6 +25,8 @@
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/scan.css') }}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/history.css') }}">
 
 </head>
 
@@ -92,7 +94,7 @@ window.APP_PAGES = [
 
     {
         name: "Privacy Scanner",
-        description: "Coming Soon",
+        description: "Discover exposed personal information and privacy risks.",
         keywords: ["privacy"],
         url: "{{ url_for('privacy.privacy') }}"
     },
@@ -101,7 +103,7 @@ window.APP_PAGES = [
         name: "History",
         description: "View previous scans.",
         keywords: ["history", "activity"],
-        url: "#"
+        url: "{{ url_for('history.history') }}"
     },
 
     {

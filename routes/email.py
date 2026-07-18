@@ -9,6 +9,8 @@ from utils.email_parser import parse_eml, parse_pasted_email
 from ai.email_ai import AIAnalyzer, should_use_ai
 from ai.threat_engine import analyze_email_rules
 
+from database.database import save_history
+
 email_bp = Blueprint("email", __name__)
 
 ai = AIAnalyzer()
@@ -213,6 +215,20 @@ def email():
                         "AI verification was unnecessary."
                     )
                 }
+
+    if result:
+
+        save_history(
+
+            module="Email Scanner",
+
+            score=result["rules"]["risk_score"],
+
+            verdict=result["rules"]["quick_verdict"],
+
+            summary=result["ai"]["summary"]
+
+        )
 
     return render_template(
         "email.html",

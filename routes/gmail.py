@@ -68,6 +68,7 @@ def gmail_list():
 
         return jsonify([])
 
+    print(session["credentials"])
     credentials = Credentials(**session["credentials"])
 
     gmail = GmailClient(credentials)

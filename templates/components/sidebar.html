@@ -70,7 +70,8 @@
             <span>Privacy Scanner</span>
         </a>
 
-        <a href="#">
+        <a href="{{ url_for('history.history') }}"
+            class="{% if request.endpoint == 'history.history' %}active{% endif %}">
             <img src="{{ url_for('static', filename='images/icons/history.svg') }}"
                  class="nav-icon"
                  alt="History">

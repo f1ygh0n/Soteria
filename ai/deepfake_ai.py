@@ -22,7 +22,7 @@ def detect_ai_image(path):
     response = client.models.generate_content(
 
         model="gemini-2.5-flash",
-
+        
         contents=[
             DEEPFAKE_ANALYSIS_PROMPT,
             types.Part.from_bytes(
@@ -30,7 +30,6 @@ def detect_ai_image(path):
                 mime_type="image/jpeg"
             )
         ]
-
     )
 
     text = response.text.strip()
@@ -38,6 +37,7 @@ def detect_ai_image(path):
     text = text.replace("```json", "")
     text = text.replace("```", "")
 
+    print(text)
     data = json.loads(text)
 
     return {

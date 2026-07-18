@@ -134,10 +134,6 @@ def analyze_password(password):
         re.search(r"(.)\1{2,}", password)
     )
 
-    # -----------------------------
-    # Score
-    # -----------------------------
-
     if length >= 16:
         score += 30
 
@@ -229,10 +225,6 @@ def analyze_password(password):
         0,
         min(score, 100)
     )
-
-    # -----------------------------
-    # Strength
-    # -----------------------------
 
     if score >= 81:
 

@@ -4,6 +4,7 @@ import time
 import uuid
 
 from utils.image_rules import analyze_image
+from database.database import save_history
 
 deepfake_bp = Blueprint("deepfake", __name__)
 
@@ -52,10 +53,8 @@ def deepfake():
 
             os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-            # Delete old uploads
             cleanup_uploads(UPLOAD_FOLDER)
 
-            # Generate unique filename
             extension = os.path.splitext(image.filename)[1].lower()
 
             filename = f"{uuid.uuid4().hex}{extension}"
@@ -70,6 +69,28 @@ def deepfake():
             image_path = "/" + filepath.replace("\\", "/")
 
             result = analyze_image(filepath)
+
+    if result:
+
+        save_history(
+
+            module="Deepfake Detector",
+
+            score=result["score"],
+
+            verdict=(
+                result["ai"]["label"]
+                if result.get("ai") and result["ai"].get("success")
+                else result["verdict"]
+            ),
+
+            summary=(
+                result["ai"]["reason"]
+                if result.get("ai") and result["ai"].get("success")
+                else result["summary"]
+            )
+
+        )
 
     return render_template(
 
