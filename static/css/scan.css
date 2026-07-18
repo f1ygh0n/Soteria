@@ -1915,3 +1915,117 @@
     font-weight:600;
 
 }
+
+.privacy-textarea-container {
+
+    width: 100%;
+
+    margin: 0.75rem 0;
+
+}
+
+.privacy-textarea {
+
+    width: 100%;
+
+    min-height: 260px;
+
+    padding: 18px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    color: #f5f5f5;
+
+    font-family: "JetBrains Mono", "Consolas", monospace;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    resize: vertical;
+
+    outline: none;
+
+    transition: 0.25s ease;
+
+    box-sizing: border-box;
+
+}
+
+.privacy-textarea::placeholder {
+
+    color: #8d8d8d;
+
+}
+
+.privacy-textarea:focus {
+
+    border-color: #5b8cff;
+
+    box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.12);
+
+    background: rgba(255, 255, 255, 0.045);
+
+}
+
+.recommendation-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:18px;
+
+}
+
+.recommendation-item{
+
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+
+    padding:14px 18px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:12px;
+
+    transition:.2s ease;
+
+}
+
+.recommendation-item:hover{
+
+    background:rgba(255,255,255,.05);
+
+    border-color:rgba(255,255,255,.10);
+
+}
+
+.recommendation-icon{
+
+    width:18px;
+    height:18px;
+
+    margin-top:2px;
+
+    opacity:.85;
+
+    flex-shrink:0;
+
+}
+
+.recommendation-item span{
+
+    color:#d6d6d6;
+
+    line-height:1.6;
+
+    font-size:.95rem;
+
+}

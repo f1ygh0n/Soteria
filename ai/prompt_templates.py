@@ -144,3 +144,34 @@ Return ONLY valid JSON in this exact format:
     "reason": "One concise paragraph explaining your decision."
 }
 """
+
+PRIVACY_ANALYSIS_PROMPT = """
+You are a cybersecurity privacy expert.
+
+The following sensitive information was detected locally:
+
+{findings}
+
+The original file has NOT been shared with you.
+
+Your job is to:
+
+1. Explain what these findings mean.
+2. Explain why they may be dangerous.
+3. Rate the overall privacy risk.
+4. Give practical recommendations.
+
+Respond ONLY as JSON:
+
+{{
+    "summary":"",
+    "risk_level":"",
+    "recommendations":[
+        "",
+        "",
+        ""
+    ]
+}}
+
+Avoid using asterisks(*) anywhere.
+"""

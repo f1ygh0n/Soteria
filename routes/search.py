@@ -41,9 +41,9 @@ PAGES = [
     },
     {
         "name": "Privacy Scanner",
-        "description": "Coming Soon",
+        "description": "Discover exposed personal information and privacy risks.",
         "keywords": ["privacy"],
-        "url": "#"
+        "url": "/privacy"
     }
 ]
 

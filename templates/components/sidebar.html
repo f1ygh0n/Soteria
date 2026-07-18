@@ -62,7 +62,8 @@
             <span>Deepfake Detector</span>
         </a>
 
-        <a href="#">
+        <a href="{{ url_for('privacy.privacy') }}"
+            class="{% if request.endpoint == 'privacy.privacy' %}active{% endif %}">
             <img src="{{ url_for('static', filename='images/icons/shield-check.svg') }}"
                  class="nav-icon"
                  alt="Privacy">

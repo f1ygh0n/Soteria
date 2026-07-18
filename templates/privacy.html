@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <div class="email-container">
+
+            <div class="upload-area">
+
+                <label for="fileUpload" class="upload-box">
+
+                    <img
+                        src="{{ url_for('static', filename='images/icons/upload.svg') }}"
+                        class="upload-icon">
+
+                    <h3>Upload a File</h3>
+
+                    <p>
+                        Drag & drop a file or click to browse.
+                    </p>
+
+                    <span>
+                        TXT • PDF • DOCX • JSON • CSV • PY • JS
+                    </span>
+
+                </label>
+
+                <input
+                    type="file"
+                    id="fileUpload"
+                    name="file"
+                    hidden>
+
+            </div>
+
+            <div class="divider">
+
+                <span>OR</span>
+
+            </div>
+
+            <div class="privacy-textarea-container">
+
+                <textarea
+                    name="text"
+                    class="privacy-textarea"
+                    placeholder="Paste text, source code, configuration files or documents here..."></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                class="scan-button scan-submit">
+
+                <img
+                    src="{{ url_for('static', filename='images/icons/scan-search.svg') }}"
+                    class="button-icon scan-icon">
+
+                <div class="button-spinner hidden"></div>
+
+                <span class="scan-text">
+
+                    Scan Privacy Risks
+
+                </span>
+
+            </button>
+
+        </div>
+
+    </form>
+
+
+    {% if result %}
+
+    <div class="scan-results">
+
+        <h2>Privacy Risk Score</h2>
+
+        <div class="result-section">
+
+            <div class="password-score">
+
+                <span class="score-number">
+
+                    {{ result.score }}%
+
+                </span>
+
+                <span class="
+                    {% if result.score >= 80 %}
+                        risk-low
+                    {% elif result.score >= 50 %}
+                        risk-medium
+                    {% else %}
+                        risk-high
+                    {% endif %}
+                ">
+
+                    {{ result.verdict }}
+
+                </span>
+
+            </div>
+
+            <div class="strength-bar">
+
+                <div
+                    class="strength-fill"
+                    style="width: {{ result.score }}%;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>Assessment</h3>
+
+            <p>
+
+                {{ result.summary }}
+
+            </p>
+
+        </div>
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>Sensitive Information Found</h3>
+
+            <div class="forensics-grid">
+
+                {% if result.findings %}
+
+                    {% for item in result.findings %}
+
+                    <div class="forensic-card">
+
+                        <span class="forensic-name">
+
+                            {{ item.type }}
+
+                        </span>
+
+                        <span class="forensic-status">
+
+                            {{ item.count }} found
+
+                        </span>
+
+                        {% if item.examples %}
+
+                        <small class="forensic-example">
+
+                            {{ item.examples | join(", ") }}
+
+                        </small>
+
+                        {% endif %}
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="forensic-card">
+
+                        <span class="forensic-name">
+
+                            No Sensitive Information Found
+
+                        </span>
+
+                        <span class="forensic-status">
+
+                            Your text appears clean.
+
+                        </span>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% if result.ai %}
+
+        <hr>
+
+        <div class="result-section">
+
+            <h3>AI Risk Assessment</h3>
+
+            <div class="forensic-card ai-card">
+
+                <span class="forensic-name">
+
+                    Gemini Security Analysis
+
+                </span>
+
+                <h3>Recommendations</h3>
+
+                <div class="recommendation-list">
+
+                    {% for recommendation in result.ai.recommendations %}
+
+                    <div class="recommendation-item">
+
+                        <img
+                            src="{{ url_for('static', filename='images/icons/badge-check.svg') }}"
+                            class="recommendation-icon">
+
+                        <span>{{ recommendation }}</span>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <hr>
+
+        <div class="privacy-notice">
+
+            <img
+                src="{{ url_for('static', filename='images/icons/info.svg') }}"
+                class="privacy-icon">
+
+            <div class="privacy-content">
+
+                <h4>Privacy Notice</h4>
+
+                <p>
+
+                    Sensitive information is detected locally using Soteria's rule engine.
+                    Only an anonymized summary of findings is sent to AI for explanation.
+                    Your uploaded file or pasted text is never transmitted.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/privacy.js') }}"></script>
+
+{% endblock %}
