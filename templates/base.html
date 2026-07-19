@@ -27,7 +27,8 @@
           href="{{ url_for('static', filename='css/scan.css') }}">
     <link rel="stylesheet"
         href="{{ url_for('static', filename='css/history.css') }}">
-
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/settings.css') }}">
 </head>
 
 <body>
@@ -110,7 +111,7 @@ window.APP_PAGES = [
         name: "Settings",
         description: "Application settings.",
         keywords: ["settings", "preferences"],
-        url: "#"
+        url: "{{ url_for('settings.settings') }}"
     }
 
 ];

@@ -26,6 +26,7 @@ from routes.password import password_bp
 from routes.deepfake import deepfake_bp
 from routes.privacy import privacy_bp
 from routes.history import history_bp
+from routes.settings import settings_bp
 
 app.register_blueprint(home_bp)
 app.register_blueprint(email_bp)
@@ -36,7 +37,8 @@ app.register_blueprint(chat_bp)
 app.register_blueprint(password_bp)
 app.register_blueprint(deepfake_bp)
 app.register_blueprint(privacy_bp)
-app.register_blueprint(history_bp)
+app.register_blueprint(history_bp)  
+app.register_blueprint(settings_bp)
 
 if __name__ == "__main__":
     init_database()

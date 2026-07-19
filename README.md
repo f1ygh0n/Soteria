@@ -71,7 +71,7 @@ AI has made phishing, deepfakes, voice cloning and social engineering more convi
 Today, cyberscams are highly common, and anyone can be targetted, especially elderly people, who do not have much awareness about these frauds. 
 
 ## 5.Software Architecture
-**EMPTY, FILL THIS LATER**
+<img src="static/images/SoftwareMap.svg" alt="Software Map" width="600" height="auto">
 
 ## 6. Dashboard
 The dashboard is the main hub of the app. It contains quick actions on a sidebar, a search bar and information about Soteria.
@@ -131,8 +131,8 @@ Uses transparent rules plus AI-assisted analysis so users understand why a threa
 - NumPy
 - python-dotenv
 
-Database
-- SQLite (planned)
+### Database
+- SQLite(Used for storing History of the user)
 
 ## 16. User Workflow
 Open dashboard > Choose module > Enter data > Threat analysis by local engines along with AI if needed > Risk score > Explanation > Recommendations > Save history.

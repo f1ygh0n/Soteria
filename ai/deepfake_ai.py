@@ -37,7 +37,6 @@ def detect_ai_image(path):
     text = text.replace("```json", "")
     text = text.replace("```", "")
 
-    print(text)
     data = json.loads(text)
 
     return {

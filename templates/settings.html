@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="page-container">
+
+    <div class="settings-container">
+
+        <div class="settings-section">
+
+            <h3>Appearance</h3>
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Theme</strong>
+                    <p>Dark Theme</p>
+                </div>
+
+                <span class="setting-badge">Current</span>
+
+            </div>
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Accent Color</strong>
+                    <p>Coming Soon</p>
+                </div>
+
+                <span class="setting-badge disabled">Soon</span>
+
+            </div>
+
+        </div>
+
+        <div class="settings-section">
+
+            <h3>History</h3>
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Scan History</strong>
+                    <p>Delete every stored scan from the local database.</p>
+                </div>
+
+                <form id="historyForm" method="POST">
+
+                    <button
+                        type="button"
+                        id="openDeleteModal"
+                        class="danger-button">
+
+                        Clear History
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="settings-section">
+
+            <h3>Privacy</h3>
+
+            <ul class="privacy-list">
+
+                <li>Passwords are analyzed locally and never leave your device.</li>
+
+                <li>Privacy Scanner only sends anonymized counts to AI.</li>
+
+                <li>Uploaded images are automatically deleted after a few minutes.</li>
+
+                <li>Scan history is stored locally using SQLite.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="settings-section">
+
+            <h3>AI Engine</h3>
+
+            <div class="setting-grid">
+
+                <div class="setting-card">
+
+                    <span class="setting-label">Model</span>
+
+                    <strong>Gemini 2.5 Flash</strong>
+
+                </div>
+
+                <div class="setting-card">
+
+                    <span class="setting-label">Explainable AI</span>
+
+                    <strong>Enabled</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="settings-section">
+
+            <h3>About</h3>
+
+            <div class="about-box">
+
+                <h2>Soteria</h2>
+
+                <p>Version <strong>v0.1 AEGIS</strong></p>
+
+                <p>Prototype for <strong>Cyber Safety in the Age of AI</strong></p>
+
+                <p>
+                    Developed by
+                    <strong>Jyotiraditya Biswas</strong> &
+                    <strong>Avidaan Dubey</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="historyModal" class="modal hidden">
+
+        <div class="modal-card">
+
+            <h2 id="modalTitle">
+                Clear Scan History?
+            </h2>
+
+            <p id="modalMessage">
+                This will permanently delete all stored scan history.
+                This action cannot be undone.
+            </p>
+
+            <div class="modal-buttons">
+
+                <button
+                    id="cancelDelete"
+                    class="secondary-button">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    id="confirmDelete"
+                    class="danger-button">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+
+{% endblock %}

@@ -78,7 +78,8 @@
             <span>History</span>
         </a>
 
-        <a href="#">
+        <a href="{{ url_for('settings.settings') }}"
+            class="{% if request.endpoint == 'settings.settings' %}active{% endif %}">
             <img src="{{ url_for('static', filename='images/icons/settings.svg') }}"
                  class="nav-icon"
                  alt="Settings">
