@@ -1,7 +1,7 @@
 # soteria.ai v0.1 Alpha "Aegis"
 Intelligent Cyber Safety Assistant for the Age of AI<br>
 
-<img width="300" height="300" alt="logo" src="static/images/logo-transparent.svg" />
+<img width="300" height="300" alt="logo" src="static/images/logo-transparent.png" />
 
 ### Competition Theme
 Cyber Safety in the Age of AI<br>
